@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-  <title>Data Vizualization Study</title>
+  <title>Geospatial Data Vizualization Study</title>
 
   <!-- Boostrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
   <!-- Google Fonts CSS -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./assets/css/custom_css.css">
@@ -26,17 +31,16 @@
     <div class="row">
       <div class="col-12">
         <h1>
-          Bar Chart - D3
+          Point Map - Leaflet
         </h1>
 
         <!-- Section for Data Table -->
-        <div class="table_presentation">
+        <div class="data_presentation">
           #$#$@aaet#$#$@aaet#$#$@aaet
         </div>
         <!-- Section for Data Vizualization -->
-        <div class="viz_presentation">
-          <svg>
-          </svg>
+        <div class="map_presentation">
+          <div id="mapid"></div>
         </div>
 
 
@@ -46,37 +50,34 @@
         <figure>
           <figcaption>HTML Code</figcaption>
           <pre>
-                      <code>
-                        <!-- your code here -->
-    
-                      </code>
-                    </pre>
+            <code>
+              <!-- your code here -->
+            </code>
+          </pre>
         </figure>
-    
+
         <br>
-    
+
         <!-- Section for Displaying Code -->
         <figure>
           <figcaption>CSS Code</figcaption>
           <pre>
-                              <code>
-                                <!-- your code here -->
-            
-                              </code>
-                            </pre>
+            <code>
+              <!-- your code here -->
+            </code>
+          </pre>
         </figure>
-    
+
         <br>
-    
+
         <!-- Section for Displaying Code -->
         <figure>
           <figcaption>Javascript Code</figcaption>
           <pre>
-                      <code>
-                        <!-- your code here -->
-    
-                      </code>
-                    </pre>
+            <code>
+              <!-- your code here -->
+            </code>
+          </pre>
         </figure>
 
       </div>
@@ -93,6 +94,14 @@
 
   <!-- D3 Javascript -->
   <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Leaflet Javascript -->
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+
+  <!-- Leaflet AJAX Javascript -->
+  <script src="./assets/javascript/leaflet_AJAX.js"></script>
 
   <!-- Custom Javascript -->
   <script src="./assets/javascript/custom_javascript.js"></script>

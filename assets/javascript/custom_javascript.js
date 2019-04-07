@@ -2,75 +2,42 @@
 
 $(document).ready(function () {
 
-    // Section for Data
+    var mymap = L.map('mapid').setView([51.505, -0.09], 14);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1Ijoid21jZmFsbDIiLCJhIjoiNjk4NGY3YjdiOGVhYWZhYzI1YjA5ZGJmMTc0ZDMwNTYifQ.0tJmXauSlx_qjiJLTscB8g'
+    }).addTo(mymap);
 
-    var dataset = [80, 100, 56, 120, 180, 30, 40, 120, 160];
+    // Section to add point marker
+    var marker = L.marker([51.5, -0.09]).addTo(mymap);
 
-    // Section for D3 Table
+    marker.bindPopup("<b>Hello world!</b><br>I am a popup.");
 
 
+    // Section to add circle marker
+    var circle = L.circle([51.508, -0.11], {
+        fillOpacity: 0.5,
+        radius: 100
+    }).addTo(mymap);
 
-    // Section for D3 Bar Chart
+    circle.bindPopup("I am a circle.");
 
-    // Creates a number of variables which define the dimensions of the svg container
-    var containerWidth = +d3.select('.col-12').style('width').slice(0, -2)
-    var svgWidth = containerWidth * .80;
-    var svgHeight = 300;
-    var barPadding = 10;
-    var barWidth = (svgWidth / dataset.length);
-    var margin = 30;
 
-    // Creates a variables that allows for scaling of the x axes of the chart elements to fit the container
-    var x = d3.scaleLinear()
-        .domain([0, dataset.length])
-        .range([0, svgWidth]);
+    // Section to add polygon marker
+    var polygon = L.polygon([
+        [51.509, -0.08],
+        [51.503, -0.06],
+        [51.51, -0.047]
+    ]).addTo(mymap);
 
-    var y = d3.scaleLinear()
-        .domain([0, d3.max(dataset)])
-        .range([svgHeight, 0]);
+    polygon.bindPopup("I am a polygon.");
 
-    // Select svg element and add attributes to the element
-    var svg = d3.select("svg")
-        .attr("width", svgWidth + 2 * margin)
-        .attr("height", svgHeight + 2 * margin)
-        .append("g")
-        .attr("transform", "translate(" + 30 + "," + margin + ")")
-        .attr("class", "bar-chart");
 
-    // Create new rect elements within the svg elemetn and add atributes
-    svg.selectAll("rect")
-        .data(dataset)
-        .enter().append("rect")
-        .attr("class", "bar")
-        .attr("width", barWidth - barPadding)
-        .attr("height", function (d) { return svgHeight - y(d); })
-        .attr("x", function (d, i) { return x(i); })
-        .attr("y", function (d) { return y(d) - 20; });
+    // Section to add geojson data
+    var geojsonLayer = new L.GeoJSON.AJAX("./assets/data/dataset.json");
+    geojsonLayer.addTo(mymap);
 
-    // Create labels for bars
-    svg.selectAll("text")
-        .data(dataset)
-        .enter()
-        .append("text")
-        .text(function (d) {
-            return d;
-        })
-        .attr("height", function (d) { return svgHeight - y(d); })
-        .attr("x", function (d, i) { return x(i) + (barWidth - 2 * barPadding) / 2; })
-        .attr("y", function (d) { return y(d); })
-        .attr("text-anchor", "middle")
-        .attr("fill", "white");
-
-    // Section to create axis
-
-    // add the x Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + (svgHeight - 20) + ")")
-        .call(d3.axisBottom(x));
-
-    // add the y Axis
-    svg.append("g")
-        .attr("transform", "translate(0," + (-20) + ")")
-        .call(d3.axisLeft(y));
 });
 

@@ -2,27 +2,8 @@ body{
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.viz_presentation{
-    margin: 0 auto;
-    display: inline-block;
-}
 
-.bar-chart{
-    background-color: white;
-}
-    
-.bar {
-    fill: #89023E;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-
-.axis text {
-    font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 11px;
+#mapid { 
+    height: 400px;
+    width: 100%; 
 }
